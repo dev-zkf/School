@@ -1,0 +1,35 @@
+h1 {
+    color: rgb(35, 35, 35);
+    margin: left;
+}
+
+.Center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+.Container {
+    width: 600px;
+    margin: auto;
+}
+
+#Welcome {
+    margin: 10%;
+    margin-top: 0;
+    color: rgb(60, 60, 60);
+    font-size: auto;
+    font-display: auto;
+    border: 5px;
+    border-style: double;
+    border-color: burlywood;
+    background: local;
+    background-color: blanchedalmond;
+}
+
+table, th, td {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    text-align: left;
+}
