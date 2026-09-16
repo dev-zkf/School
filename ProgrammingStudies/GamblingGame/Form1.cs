@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace GamblingGame
         private int spendAmount;
         private int selectedNumber = -1;
 
+        private List<Button> btns = new List<Button>();
+
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace GamblingGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Initial actions
             OutputToLog("Casino has opened");
             label1.Text = $"{money.ToString()}€";
@@ -72,35 +76,36 @@ namespace GamblingGame
             LogText.AppendText(Environment.NewLine + DT.ToString("H:mm:ss") + $": {msg}");
         }
 
-        private void SetButtonsColor(int btn)
+
+        private void SetButton(int buttonIndex, Button button)
         {
-            for (int i = 0; i < 3; i++)
+            btns.Add(button);
+
+            selectedNumber = buttonIndex;
+
+            OutputToLog($"You selected number {buttonIndex}");
+
+            SetButtonsColor(button);
+        }
+
+        private void SetButtonsColor(Button btnPressed)
+        {
+            foreach (Button button in btns)
             {
-                if (i != btn) ;
-                    // MAKE A LIST FOR BUTTONS AND ADD THEM TO IT
+                if (button == btnPressed)
+                {
+                    button.BackColor = Color.Gray;
+                }
+                else
+                {
+                    button.BackColor = Color.White;
+                }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (selectedNumber != -1) return; // just making sure it hasnt been already selected
-            selectedNumber = 3;
-            button3.BackColor = Color.Gray;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (selectedNumber != -1) return; // just making sure it hasnt been already selected
-            selectedNumber = 2;
-            button2.BackColor = Color.Gray;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (selectedNumber != -1) return; // just making sure it hasnt been already selected
-            selectedNumber = 1;
-            button1.BackColor = Color.Gray;
-        }
+        private void button3_Click(object sender, EventArgs e) => SetButton(3, button3);
+        private void button2_Click(object sender, EventArgs e) => SetButton(2, button2);
+        private void button1_Click(object sender, EventArgs e) => SetButton(1, button1);
         private void AmountTxt_TextChanged(object sender, EventArgs e)
         {
 
