@@ -15,7 +15,7 @@ namespace GamblingGame
     public partial class Form1 : Form
     {
         private int money = 100;
-        private int spendAmount;
+        private int betAmount;
         private int selectedNumber = -1;
 
         private List<Button> btns = new List<Button>();
@@ -30,53 +30,79 @@ namespace GamblingGame
 
             // Initial actions
             OutputToLog("Casino has opened");
-            label1.Text = $"{money.ToString()}€";
+            UpdateUi();
         }
 
 
         private void GambleBtn_Click(object sender, EventArgs e)
         {
-            if (selectedNumber == -1) OutputToLog("Select a number first"); return;
-            Random random = new Random();
-            int rng = random.Next(1, 3);
+            if (selectedNumber == -1)
+            {
+                OutputToLog("Select a number first");
+                return;
+            }
+            else if (betAmount <= 0)
+            {
+                OutputToLog("Bet something atleast.");
+                return;
+            }
 
+            Random random = new Random();
+            int rng = random.Next(1, 4);
+
+            OutputToLog($"rng: {rng.ToString()}. selected: {selectedNumber}");
 
             if (selectedNumber == rng)
             {
                 // Win logic
-                OutputToLog("You won!!!");
+                int winAmount = betAmount * 2;
+                money += winAmount;
+                OutputToLog($"You won! Casino has deposited {winAmount.ToString()}€");
             }
             else
             {
                 // Lose logic
-                OutputToLog("You have lost, lol.");
+                money -= betAmount;
+                OutputToLog($"You have lost, lol. -{betAmount}€");
+
+                if (money <= 0)
+                {
+                    // No more money logic
+                    OutputToLog("Damn, you are broke gg");
+                }
             }
+            UpdateUi();
+
         }
 
 
-        private void spendAmountTxt_ValueChanged(object sender, EventArgs e)
+
+        private void UpdateUi()
         {
-            int amount = Decimal.ToInt32(spendAmountTxt.Value);
+            // Update users balance
+            balanceLabel.Text = $"Balance: {money.ToString()}€";
+        }
+        private void betAmountTxt_ValueChanged(object sender, EventArgs e)
+        {
+            int amount = Decimal.ToInt32(betAmountTxt.Value);
             if (amount <= money)
             {
-                spendAmount = amount;
+                betAmount = amount;
             }
             else
             {
                 OutputToLog("You are too broke, i have corrected your input to what you have.");
-                spendAmount = money;
-                spendAmountTxt.Value = money;
+                betAmount = money;
+                betAmountTxt.Value = money;
             }
 
         }
-
         private void OutputToLog(string msg)
         {
-            DateTime DT = DateTime.Parse("31/12/2006 07:00:00 AM");
+            DateTime DT = DateTime.Parse(DateTime.Now.ToString());
             LogText.AppendText(Environment.NewLine + DT.ToString("H:mm:ss") + $": {msg}");
+            LogText.ScrollToCaret();
         }
-
-
         private void SetButton(int buttonIndex, Button button)
         {
             btns.Add(button);
@@ -87,14 +113,13 @@ namespace GamblingGame
 
             SetButtonsColor(button);
         }
-
         private void SetButtonsColor(Button btnPressed)
         {
             foreach (Button button in btns)
             {
                 if (button == btnPressed)
                 {
-                    button.BackColor = Color.Gray;
+                    button.BackColor = Color.FromArgb(255,200,200,200);
                 }
                 else
                 {
@@ -102,7 +127,6 @@ namespace GamblingGame
                 }
             }
         }
-
         private void button3_Click(object sender, EventArgs e) => SetButton(3, button3);
         private void button2_Click(object sender, EventArgs e) => SetButton(2, button2);
         private void button1_Click(object sender, EventArgs e) => SetButton(1, button1);
@@ -118,8 +142,5 @@ namespace GamblingGame
         {
 
         }
-
-
-
     }
 }
