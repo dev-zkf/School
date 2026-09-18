@@ -27,6 +27,12 @@ int main()
 
     string result = format("So is this information correct? {}. Age: {}. Student ID: {}. Height: {}. Weight: {}.", name, age, studentId, height, weight);
     cout << result << endl;
+
+    int num1;
+    int num2;
+    cin >> num1 >> num2;
+    int result = num1 + num2;
+    cout << result;
     
     system("pause");
 }
