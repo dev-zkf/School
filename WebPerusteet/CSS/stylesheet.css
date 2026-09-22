@@ -1,0 +1,90 @@
+body {
+  background-image: url("../Images/halko.png");
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+#container div {
+  background: lightslategray;
+  margin: auto;
+  left: 25%;
+}
+#left {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+#center {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  bottom: 0px;
+}
+#right {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.important {
+  font-size: 150%;
+}
+
+.table {
+  width: 600px;
+  margin: auto;
+}
+
+h1 {
+  color: purple;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#loginID {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  bottom: 0px;
+}
+
+h2 {
+  color: black;
+  font-size: 14px;
+}
+
+p.first {
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+  font-weight: bold;
+}
+p.second {
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  text-align: left;
+}
