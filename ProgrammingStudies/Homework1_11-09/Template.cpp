@@ -1,4 +1,4 @@
-//Programming Project - Lastname Firstname
+//Programming Project - Miro Ortela
 
 #include <iostream>
 #include <Windows.h>
