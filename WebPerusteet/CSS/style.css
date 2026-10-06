@@ -20,13 +20,14 @@ body {
 
 .header {
   grid-area: header;
-  background-color: burlywood;
+  background-color: #333;
+  color: white;
   width: 100%;
   padding-left: 20px;
 }
 .nav {
   grid-area: nav;
-  background-color: burlywood;
+  background-color: #333;
   display: grid;
 }
 .nav div {
@@ -40,9 +41,9 @@ body {
 .nav a {
   font-weight: bold;
   font-size: 24px;
-  color: cadetblue;
+  color: white;
   text-decoration: none;
-  transition-duration: 0.2ss;
+  transition-duration: 0.2s;
 }
 .nav a:hover {
   color: rgb(64, 102, 104);
@@ -61,27 +62,45 @@ body {
   padding-left: 15px;
 }
 
+.nav .icon {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .wrapper {
     grid-template-columns: 1fr;
     grid-auto-rows: auto auto 1fr auto auto;
     grid-template-areas:
-      "header"
-      "nav"
-      "main"
-      "aside"
-      "footer";
+      "header nav"
+      "main main"
+      "aside aside"
+      "footer footer";
+  }
+  .nav {
+    z-index: 1;
   }
   .nav div {
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
-    gap: 15px;
-    padding-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    justify-self: start;
+    width: 100%;
   }
   .header {
     text-align: center;
     padding-left: 0;
+  }
+  .nav.responsive {
+    grid-column: 1 / span 2;
+  }
+  .nav.responsive a {
+    display: grid;
+    text-align: center;
+  }
+  .nav a {
+    display: none;
+  }
+  .nav a.icon {
+    display: flex;
+    align-self: flex-end;
   }
 }
