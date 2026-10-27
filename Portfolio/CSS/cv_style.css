@@ -1,0 +1,110 @@
+/*This is the main StyleSheet*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  /* Warm accents */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+
+  /* Main Accents */
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+
+  /* Text & Foreground Tones */
+  --text: #cdd6f4;
+  --subtext0: #a6adc8;
+  --subtext1: #bac2de;
+  --overlay0: #6c7086;
+  --overlay1: #7f849c;
+  --overlay2: #9399b2;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --surface2: #585b70;
+
+  /* Background Tones */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 9fr 200px;
+  grid-auto-rows: 80px auto 40px;
+  grid-template-areas:
+    "header nav"
+    "main main";
+}
+
+.header {
+  grid-area: header;
+  color: var(--text);
+  background-color: var(--crust);
+  padding-left: 20px;
+}
+.nav {
+  grid-area: nav;
+  background-color: var(--crust);
+  display: grid;
+}
+.nav div {
+  display: flex;
+  align-self: center;
+  justify-self: right;
+  text-align: center;
+  padding-right: 30px;
+}
+.nav a {
+  color: var(--mauve);
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+.nav a:hover {
+  color: var(--lavender);
+  transition-duration: 0.2s;
+}
+.content {
+  grid-area: main;
+  padding-left: 30px;
+  color: var(--subtext1);
+  background-color: var(--base);
+}
+.content p {
+  padding-left: 15px;
+  font-size: larger;
+}
+.side {
+  grid-area: side;
+  overflow: auto;
+  width: 100%;
+  text-align: center;
+  color: var(--subtext0);
+  background-color: var(--surface0);
+  transition: all 1s;
+}
+.footer {
+  grid-area: footer;
+  padding-left: 15px;
+  align-self: center;
+  color: var(--subtext1);
+  background-color: var(--crust);
+}
