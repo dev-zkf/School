@@ -4,10 +4,12 @@
 #include <Windows.h>
 #include <string>
 #include <format>
+#include <cctype>
+#include <algorithm>
 
 using namespace std;
 
-void displayMenu(int i), page1(), page2();
+void displayMenu(int i), page1(), page2(), sentenceInfo();
 
 int main()
 {
@@ -29,6 +31,7 @@ int main()
         switch (opt) {
             case 1: { page1(); break; }
             case 2: { page2(); break; }
+            case 3: { sentenceInfo(); break; }
             default: cout << "Invalid option! Please try again.\n"; break;
         }
     }
@@ -55,6 +58,8 @@ void page1()
 void page2()
 {
     int opt;
+    char ABC = 'B';
+    tolower(ABC);
 
     while (true) {
         displayMenu(1);
@@ -112,6 +117,54 @@ void page2()
     }
 }
 
+void sentenceInfo()
+{
+    string input;
+
+    cin.ignore();
+    do {
+        cout << "Write a sentence: ";
+        getline(cin, input);
+    }
+    while (input.size() == 0);
+    
+    int sentenceCount = 0;
+    int wordCount = 0;
+
+    bool inSentence = false;
+    bool inWord = false;
+
+    for (char ch : input) {
+        if (ch == '.' || ch == '!' || ch == '?') {
+            inSentence = false;
+            inWord = false;
+        }
+        else if (ch == ' ') {
+            inWord = false;
+        }
+        else {
+            // Start of a new word.
+            if (!inWord && isalpha(ch)) {
+                inWord = true;
+                wordCount++;
+            }
+
+            // Start of a new sentence.
+            if (!inSentence && ch != ',') {
+                inSentence = true;
+                sentenceCount++;
+            }
+        }
+    }
+
+    string output = format(R"(
+Word Count: {}
+Sentence Count: {}
+Text Complexity: {})", wordCount, sentenceCount, sentenceCount > 2 ? "COMPLEX" : "SIMPLE");
+
+    cout << output;
+}
+
 void displayMenu(int i)
 {
     switch (i)
@@ -121,6 +174,7 @@ void displayMenu(int i)
             cout << "\n---- Homework Browser ----\n"
                 << "1 - Questionaire\n"
                 << "2 - Kilometre converter\n"
+                << "3 - Sentence Info\n"
                 << "0 - Quit\n"
                 << "Enter choice: ";
             break;
@@ -131,14 +185,9 @@ void displayMenu(int i)
                 << "1 - Convert points to grade\n"
                 << "2 - Convert to miles\n"
                 << "3 - Convert to nautical miles\n"
-                << "0 - Quit\n"
+                << "0 - Back\n"
                 << "Enter choice: ";
             break;
         }
     }
 }
-
-
-
-
-
