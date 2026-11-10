@@ -52,10 +52,10 @@ body {
 }
 
 header {
-  min-height: 50px;
-  padding-left: 25px;
   background: var(--crust);
+  padding: 15px 25px;
 }
+
 main {
   min-height: 50px;
   padding-left: 25px;
@@ -67,37 +67,58 @@ footer {
   background: var(--mantle);
 }
 
-.nav {
-  flex-direction: row;
-  position: relative;
-  overflow: hidden;
+/* Top row containing the Title and the Hamburger Icon */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.nav #links {
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Hamburger Icon styling */
+#navIcon {
+  display: grid;
+  cursor: pointer;
+}
+
+#navIcon div {
+  width: 30px;
+  height: 4px;
+  background-color: var(--mauve);
+  margin: 3px 0;
+  border-radius: 2px;
+}
+
+.nav-links {
   display: none;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid var(--surface0);
 }
-.nav a {
-  display: block;
-  height: 100%;
-  color: white;
+
+.nav-links a {
+  color: var(--text);
   text-decoration: none;
   font-size: 17px;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
-.nav a.icon {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-a.icon div {
-  width: 35px;
-  height: 5px;
-  background-color: var(--mauve);
-  margin: 6px 0;
-}
-
-.nav a:hover {
+.nav-links a:hover {
   background-color: var(--surface0);
-  color: black;
+  color: var(--mauve);
+}
+
+@media (max-width: 800px) {
+  .nav-links.responsive {
+    display: flex;
+  }
 }
 
 /* --- Text --- */
