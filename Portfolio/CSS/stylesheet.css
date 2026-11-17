@@ -3,6 +3,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overscroll-behavior-y: none;
 }
 
 :root {
@@ -58,12 +59,15 @@ header {
 
 main {
   min-height: 50px;
-  padding-left: 25px;
+  padding: 15px 25px;
   background: var(--base);
 }
 footer {
+  display: flex;
   min-height: 50px;
-  padding-left: 25px;
+  padding: 15px 25px;
+  justify-content: center;
+  align-items: center;
   background: var(--mantle);
 }
 
@@ -76,23 +80,23 @@ footer {
 
 header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 40px;
 }
 
 /* Hamburger Icon styling */
 #navIcon {
   display: grid;
   cursor: pointer;
+  text-decoration: none;
+  border-radius: 4px;
+  color: var(--mauve);
 }
 
-#navIcon div {
-  width: 30px;
-  height: 4px;
-  background-color: var(--mauve);
-  margin: 3px 0;
-  border-radius: 2px;
+#navIcon:hover {
+  background-color: var(--surface0);
+  transition: ease-in-out 0.25s;
+  color: var(--mauve);
 }
-
 .nav-links {
   display: none;
   flex-direction: row;
@@ -108,6 +112,7 @@ header h1 {
   font-size: 17px;
   padding: 5px 10px;
   border-radius: 4px;
+  transition: ease-in-out 0.25s;
 }
 
 .nav-links a:hover {
@@ -139,4 +144,42 @@ p {
 }
 
 @media (max-width: 800px) {
+}
+
+/* --- Contact form TEMPORARY DELETE AFTER I DONT NEED THIS SHIT */
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--surface1);
+  background-color: var(--surface2);
+  color: var(--subtext0);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: var(--maroon);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--red);
+}
+
+.container {
+  border-radius: 5px;
+  background-color: var(--surface0);
+  padding: 20px;
+}
+.container label {
+  color: var(--text);
+  font-size: 16px;
 }

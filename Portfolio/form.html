@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <title>Home Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <h1>Contact Form</h1>
+        <a id="navIcon" href="index.html">
+          <span class="material-symbols-outlined" style="font-size: 48px">
+            home
+          </span>
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <form onsubmit="sendMessage(event)">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+          />
+
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+          />
+          <label for="subject">Subject</label>
+          <textarea
+            id="subject"
+            name="subject"
+            placeholder="Write something.."
+            style="height: 200px"
+          ></textarea>
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <a href="#">Contact1</a>
+        <a href="#">Contact2</a>
+        <a href="#">Contact3</a>
+      </div>
+    </footer>
+  </body>
+  <script src="JS/scripts.js"></script>
+</html>
