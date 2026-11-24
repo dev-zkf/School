@@ -109,7 +109,7 @@ header h1 {
 .nav-links a {
   color: var(--text);
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
   padding: 5px 10px;
   border-radius: 4px;
   transition: ease-in-out 0.25s;
@@ -124,6 +124,47 @@ header h1 {
   .nav-links.responsive {
     display: flex;
   }
+}
+
+/* -- Project Roles */
+#Roles {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  gap: 10px;
+}
+.badge {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 15px;
+  color: var(--rosewater);
+  font-weight: bold;
+  font-size: large;
+}
+.badge.red {
+  background: var(--red);
+  border: var(--red);
+}
+.badge.blue {
+  background: var(--blue);
+  border: var(--blue);
+}
+
+/* --- Picture Style --- */
+#Preview {
+  display: flex;
+  border: var(--surface1);
+  border-radius: 0px;
+  border-style: dashed;
+  border-width: 5px;
+  padding: 10px;
+  width: fit-content;
+  justify-content: space-between;
+  margin: 20px;
+}
+#Preview img {
+  width: 30%;
+  height: 250px;
 }
 
 /* --- Text --- */
@@ -141,6 +182,7 @@ a {
 
 p {
   color: var(--subtext0);
+  margin-right: 40%;
 }
 
 @media (max-width: 800px) {
